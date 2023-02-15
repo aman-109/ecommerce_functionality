@@ -56,10 +56,9 @@ const Login = () => {
         "http://localhost:8179/user/login",
         body,
         {
-          headers: {
-            "Content-type": "application/json",
-          },
-        }
+          withCredentials: true,
+          headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'
+      }}
       );
 
       if (data.status) {
