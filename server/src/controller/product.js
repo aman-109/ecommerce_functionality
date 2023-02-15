@@ -72,4 +72,22 @@ const deleteService = async (req, res) => {
   }
 };
 
-module.exports = { getAllProduct, addProd,addService, deleteService };
+
+
+//Edit Product
+const editProduct=async(req,res)=>{
+  const {name,price,image,id}=req.body
+  let prod=await Product.findById(id)
+  if(prod){
+
+      let updated=await Product.findByIdAndUpdate(prod._id,{name:name,price:price,image:image},{new:true})
+      if(updated){
+         return res.send({status:true,message:"Product Updated Successfully",updated})
+      }
+  }
+  else {
+     return res.send({status:false,message:"Product not found"})
+  }
+}
+
+module.exports = { getAllProduct, addProd,addService, deleteService,editProduct };

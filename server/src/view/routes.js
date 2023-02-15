@@ -21,6 +21,11 @@ router
     "/admin/delete-service/:id",
     adminVerification,
     productRoute.deleteService
+  )
+  .patch(
+    "/admin/edit-service",
+    adminVerification,
+    productRoute.editProduct
   );
 
 module.exports = router;
