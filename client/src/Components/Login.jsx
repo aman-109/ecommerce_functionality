@@ -13,7 +13,7 @@ import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import jwt_decode from "jwt-decode"
+import jwt_decode from "jwt-decode";
 
 const Login = () => {
   const [state, setState] = useState({
@@ -53,12 +53,15 @@ const Login = () => {
       };
 
       const { data } = await axios.post(
-        "http://localhost:8179/user/login",
+        "https://ecommerceproject-ln4v.onrender.com/user/login",
         body,
         {
           withCredentials: true,
-          headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'
-      }}
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+          },
+        }
       );
 
       if (data.status) {
@@ -69,14 +72,13 @@ const Login = () => {
           isClosable: true,
           position: "top-left",
         });
+        localStorage.setItem("token",JSON.stringify(data.token))
         var decoded = jwt_decode(data.token);
-        if(decoded.role !== "admin"){
+        if (decoded.role !== "admin") {
           navigate("/");
-
-        }else{
-          navigate("/admin")
+        } else {
+          navigate("/admin");
         }
-
       }
 
       setLoading(false);
@@ -106,46 +108,45 @@ const Login = () => {
 
   return (
     <>
-    
-        <VStack spacing="5px">
-          <FormControl id="email" isRequired>
-            <FormLabel>Email</FormLabel>
-            <Input
-              name="email"
-              type="email"
-              placeholder="Enter Email"
-              onChange={hanldeChange}
-            />
-          </FormControl>
-          <FormControl id="password" isRequired>
-            <FormLabel>Password</FormLabel>
-            <Input
-              name="password"
-              type="password"
-              placeholder="Enter Password"
-              onChange={hanldeChange}
-            />
-          </FormControl>
+      <VStack spacing="5px">
+        <FormControl id="email" isRequired>
+          <FormLabel>Email</FormLabel>
+          <Input
+            name="email"
+            type="email"
+            placeholder="Enter Email"
+            onChange={hanldeChange}
+          />
+        </FormControl>
+        <FormControl id="password" isRequired>
+          <FormLabel>Password</FormLabel>
+          <Input
+            name="password"
+            type="password"
+            placeholder="Enter Password"
+            onChange={hanldeChange}
+          />
+        </FormControl>
 
-          <Button
-            colorScheme="blue"
-            width="100%"
-            style={{ marginTop: 15 }}
-            onClick={handleSubmit}
-          >
-            {loading === true ? (
-              <Spinner
-                thickness="4px"
-                speed="0.65s"
-                emptyColor="gray.200"
-                color="blue.500"
-                size="md"
-              />
-            ) : (
-              "Login"
-            )}
-          </Button>
-        </VStack>
+        <Button
+          colorScheme="blue"
+          width="100%"
+          style={{ marginTop: 15 }}
+          onClick={handleSubmit}
+        >
+          {loading === true ? (
+            <Spinner
+              thickness="4px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="blue.500"
+              size="md"
+            />
+          ) : (
+            "Login"
+          )}
+        </Button>
+      </VStack>
     </>
   );
 };

@@ -18,7 +18,7 @@ const UserDetails = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios("http://localhost:8179/admin/dashboard", {
+    axios("https://ecommerceproject-ln4v.onrender.com/admin/dashboard", {
       withCredentials: true,
       headers: {
         "Access-Control-Allow-Origin": "*",

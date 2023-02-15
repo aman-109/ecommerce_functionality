@@ -63,7 +63,7 @@ const Payment = () => {
     <Box  w="50%" m="auto" mb={"70px"} border="1px solid red"></Box>
 
     <Box p={10} m="auto">
-         <PayPalScriptProvider options={{ "client-id": "ARooVQfQpLaU1aiU_Pq2cE6ES2bVbObiMrNr3VnZAMOIXAyB16PyYiFwkZf3z8IbWczWaBaKcJU6Dbgp" }}>
+         <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_CLIENTID  }}>
            <PayPalButtons style={{ layout: "horizontal" }} createOrder={createOrder}
            onApprove={onApprove} />
        </PayPalScriptProvider>

@@ -59,7 +59,7 @@ const Signup = () => {
       };
 
       const { data } = await axios.post(
-        "http://localhost:8179/user/signup",
+        "https://ecommerceproject-ln4v.onrender.com/user/signup",
         body,
         {
           headers: {
@@ -76,16 +76,15 @@ const Signup = () => {
           position: "top-left",
         });
 
-        setTimeout(()=>{
-
-            toast({
-              title: "Please proceed to login",
-              status: "info",
-              duration: 5000,
-              isClosable: true,
-              position: "top-left",
-            });
-        },2000)
+        setTimeout(() => {
+          toast({
+            title: "Please proceed to login",
+            status: "info",
+            duration: 5000,
+            isClosable: true,
+            position: "top-left",
+          });
+        }, 2000);
       }
       setLoading(false);
     } catch (error) {
@@ -103,64 +102,62 @@ const Signup = () => {
 
   return (
     <>
-      
-        <VStack spacing="5px">
-          <FormControl id="name" isRequired>
-            <FormLabel>Name</FormLabel>
-            <Input
-              name="name"
-              type="text"
-              placeholder="Enter Name"
-              onChange={hanldeChange}
-            />
-          </FormControl>
-          <FormControl id="email" isRequired>
-            <FormLabel>Email</FormLabel>
-            <Input
-              name="email"
-              type="email"
-              placeholder="Enter Email"
-              onChange={hanldeChange}
-            />
-          </FormControl>
-          <FormControl id="password" isRequired>
-            <FormLabel>Password</FormLabel>
-            <Input
-              name="password"
-              type="password"
-              placeholder="Enter Password"
-              onChange={hanldeChange}
-            />
-          </FormControl>
-          <FormControl id="gender" isRequired>
-            <FormLabel>Gender</FormLabel>
-            <Select name="gender" onChange={hanldeChange}>
-              <option value="">Select Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </Select>
-          </FormControl>
+      <VStack spacing="5px">
+        <FormControl id="name" isRequired>
+          <FormLabel>Name</FormLabel>
+          <Input
+            name="name"
+            type="text"
+            placeholder="Enter Name"
+            onChange={hanldeChange}
+          />
+        </FormControl>
+        <FormControl id="email" isRequired>
+          <FormLabel>Email</FormLabel>
+          <Input
+            name="email"
+            type="email"
+            placeholder="Enter Email"
+            onChange={hanldeChange}
+          />
+        </FormControl>
+        <FormControl id="password" isRequired>
+          <FormLabel>Password</FormLabel>
+          <Input
+            name="password"
+            type="password"
+            placeholder="Enter Password"
+            onChange={hanldeChange}
+          />
+        </FormControl>
+        <FormControl id="gender" isRequired>
+          <FormLabel>Gender</FormLabel>
+          <Select name="gender" onChange={hanldeChange}>
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </Select>
+        </FormControl>
 
-          <Button
-            colorScheme="blue"
-            width="100%"
-            style={{ marginTop: 15 }}
-            onClick={handleSubmit}
-          >
-            {loading === true ? (
-              <Spinner
-                thickness="4px"
-                speed="0.65s"
-                emptyColor="gray.200"
-                color="blue.500"
-                size="md"
-              />
-            ) : (
-              "Signup"
-            )}
-          </Button>
-        </VStack>
-      
+        <Button
+          colorScheme="blue"
+          width="100%"
+          style={{ marginTop: 15 }}
+          onClick={handleSubmit}
+        >
+          {loading === true ? (
+            <Spinner
+              thickness="4px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="blue.500"
+              size="md"
+            />
+          ) : (
+            "Signup"
+          )}
+        </Button>
+      </VStack>
     </>
   );
 };

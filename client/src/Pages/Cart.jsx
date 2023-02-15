@@ -11,22 +11,24 @@ const Cart = () => {
   const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get("http://localhost:8179/cart", {
+      .get("https://ecommerceproject-ln4v.onrender.com/cart", {
         withCredentials: true,
         headers: {
           "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
         },
       })
-      .then((res) => setData(res.data.cart));
-    handleQty();
-  }, []);
-
-  const handleQty = () => {
-    let x = data.reduce((acc, cur) => (acc += Number(cur.product_id.price)), 0);
-    setQty(x);
-    localStorage.setItem("cartTotal", JSON.stringify(x));
-  };
+      .then((res) =>  setData(res.data.cart));
+    }, []);
+    
+    const handleQty = () => {
+        let x = data?.reduce((acc, cur) => (acc += Number(cur.product_id.price)), 0);
+        setQty(x);
+        localStorage.setItem("cartTotal", JSON.stringify(x));
+    };
+    useEffect(()=>{
+        handleQty()
+    })
 
   return (
     <>
