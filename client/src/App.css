@@ -1,0 +1,12 @@
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.App{
+  min-height: 100vh;
+  text-align: center;
+  background-image: url("../public/project\ background.jpg");
+  background-size: cover;
+  background-position: center;
+}
