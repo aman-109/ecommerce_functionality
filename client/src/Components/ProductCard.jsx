@@ -63,7 +63,7 @@ function ProductCard({ data, addToCart }) {
           <Flex justifyContent="space-between" alignContent="center">
             <Box fontSize="lg" color={useColorModeValue("gray.800", "white")}>
               <Box as="span" color={"gray.600"} fontSize="lg">
-                ₹
+                $
               </Box>
               {data.price}
             </Box>

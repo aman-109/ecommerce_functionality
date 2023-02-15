@@ -1,8 +1,17 @@
-import { Box, useColorModeValue } from "@chakra-ui/react";
+import { Box, Text, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
+import { useCookies } from 'react-cookie';
 const AdminNavbar = () => {
+  
+  const [cookies, removeCookie] = useCookies(['token']);
+
+  const navigate=useNavigate()
+  const handleLogout=()=>{
+    removeCookie("token",{path:"/"})
+    navigate("/auth")
+  }
   return (
     <>
       <Box
@@ -26,6 +35,7 @@ const AdminNavbar = () => {
           <Link to="/admin">Home</Link>
           <Link to="/admin/createproduct">Add Product</Link>
           <Link to="/admin/dashboard">User Details</Link>
+          <Text onClick={handleLogout}>Logout</Text>
         </Box>
       </Box>
     </>

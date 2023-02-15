@@ -8,7 +8,7 @@ const UserDisplay = ({ ele }) => {
         <Tr key={ele._id}>
           <Td>{ele.email}</Td>
           <Td>{el.product_id.name}</Td>
-          <Td> ₹ {el.product_id.price}</Td>
+          <Td> $ {el.product_id.price}</Td>
         </Tr>
       ))}
     </>

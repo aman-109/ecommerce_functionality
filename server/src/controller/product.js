@@ -46,6 +46,22 @@ const addProd = async (req, res) => {
     return res.status(401).send({ message: e.message });
   }
 };
+
+//3.User Cart
+const cartProd = async (req, res) => {
+ try {
+    let user = await User.findById(req.userId).populate("purchased_product.product_id").select("-password")
+  
+    return res
+      .status(200)
+      .send({ status: true, cart:user.purchased_product});
+  } catch (e) {
+    return res.status(401).send({ message: e.message });
+  }
+};
+
+
+
 // Add Product in database
 const addService = async (req, res) => {
   let data = req.body;
@@ -90,4 +106,4 @@ const editProduct=async(req,res)=>{
   }
 }
 
-module.exports = { getAllProduct, addProd,addService, deleteService,editProduct };
+module.exports = { getAllProduct, addProd,cartProd,addService, deleteService,editProduct };

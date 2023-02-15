@@ -78,7 +78,7 @@ const loginUser = async (req, res) => {
 
   if (user) {
     let token = jwt.sign(
-      { email: user.email, name: user.name, role: user.role },
+      { id:user._id,email: user.email, name: user.name, role: user.role },
       token_secret,
       {
         expiresIn: "7 days",
@@ -92,18 +92,7 @@ const loginUser = async (req, res) => {
   }
 };
 
-//3. Logout callback
-const logoutUser = async (req, res) => {
-  let token = req.headers.authorization;
-  try {
-    let tok = await Blacklist.create({ token });
-    res
-      .status(200)
-      .send({ status: true, message: "user logouted successfully" });
-  } catch (e) {
-    res.status(401).send({ message: e.message });
-  }
-};
+
 
 
 
@@ -111,5 +100,4 @@ module.exports = {
   getUser,
   signupUser,
   loginUser,
-  logoutUser,
 };

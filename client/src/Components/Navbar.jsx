@@ -23,7 +23,7 @@ const Navbar = () => {
       
     >
       <Link to="/">Home</Link>
-      <Link to="/login">Logout</Link>
+      <Link to="/auth">Logout</Link>
       <Link to="/cart">
         <Icon as={FiShoppingCart} h={7} w={7} alignSelf={"center"} />
       </Link>

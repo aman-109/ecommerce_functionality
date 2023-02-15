@@ -6,13 +6,18 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom"
 import {ChakraProvider} from "@chakra-ui/react"
 
+import { CookiesProvider } from 'react-cookie';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
   <BrowserRouter>
+  <CookiesProvider>
+
   <ChakraProvider>
 
     <App />
   </ChakraProvider>
+  </CookiesProvider>
   </BrowserRouter>
 );
 
